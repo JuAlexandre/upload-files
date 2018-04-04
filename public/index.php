@@ -12,19 +12,19 @@ if (!empty($_FILES)) {
             $errors['type'] = 'Le type de fichier est incorrect';
         } else {
             $fileName = 'image' . rand() . '.' . pathinfo($_FILES['files']['name'][$i], PATHINFO_EXTENSION);
-            $moveResult = move_uploaded_file($_FILES['files']['tmp_name'][$i], '../upload/'.$fileName);
+            $moveResult = move_uploaded_file($_FILES['files']['tmp_name'][$i], 'upload/'.$fileName);
         }
     }
 }
 
 if (!empty($_GET['image'])) {
-    if (file_exists('../upload/'.$_GET['image'])) {
-        $deleteResult = unlink('../upload/'.$_GET['image']);
+    if (file_exists('upload/'.$_GET['image'])) {
+        $deleteResult = unlink('upload/'.$_GET['image']);
         header('Location: index.php');
     }
 }
 
-$images = array_diff(scandir('../upload'), array('.', '..'));
+$images = array_diff(scandir('upload'), array('.', '..'));
 
 ?>
 
@@ -76,7 +76,7 @@ $images = array_diff(scandir('../upload'), array('.', '..'));
             <?php foreach ($images as $image): ?>
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                    <img src="<?= '../upload/'.$image ?>" alt="<?= $image ?>">
+                    <img src="<?= 'upload/'.$image ?>" alt="<?= $image ?>">
                     <div class="caption">
                         <h3><?= $image ?></h3>
                         <p><a href="?image=<?= $image ?>" class="btn btn-danger" role="button">Supprimer</a></p>
