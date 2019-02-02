@@ -46,21 +46,21 @@ $images = array_diff(scandir('upload'), array('.', '..'));
         <?php if ($moveResult == true): ?>
         <div class="alert alert-success">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <strong>Super !</strong> Les fichiers ont été ajouté.
+            <strong>Super !</strong> Le(s) fichier(s) a/ont été ajouté.
         </div>
         <?php endif; ?>
 
         <?php if ($deleteResult == true): ?>
         <div class="alert alert-success">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <strong>Super !</strong> Les fichiers a été supprimé.
+            <strong>Super !</strong> Le fichier a été supprimé.
         </div>
         <?php endif; ?>
         
         <div class="row">
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="files">Choisi tes images</label>
+                    <label for="files">Choisis tes images</label>
                     <input type="file" class="form-control" name="files[]" id="files" multiple>
                     <?php if (!empty($errors)): ?>
                         <?php foreach ($errors as $error): ?>
